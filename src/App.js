@@ -1,14 +1,16 @@
 import "./app.css";
 import ImageList from "./components/ImageList";
 import SearchBar from "./components/SearchBar";
-import searchImages from "./api";
-
-console.log(searchImages());
 
 function App() {
+  // Child to parent communication !
+  // We are defining this function only to be passed down as props, and call it in the SearchBar component to receive the search term that would be clicked there
+  const handleSearchTerm = (term) => {
+    console.log(term);
+  };
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar handleTerm={handleSearchTerm} />
       <ImageList />
     </div>
   );
