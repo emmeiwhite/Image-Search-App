@@ -1,6 +1,9 @@
 import "./app.css";
 import ImageList from "./components/ImageList";
 import SearchBar from "./components/SearchBar";
+import searchImages from "./api";
+
+console.log(searchImages());
 
 function App() {
   return (
