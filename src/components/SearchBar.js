@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchBar.css"; // Import the CSS file
 
 export default function SearchBar({ handleTerm }) {
   const [term, setTerm] = useState("");
@@ -7,21 +8,30 @@ export default function SearchBar({ handleTerm }) {
     e.preventDefault();
     if (!term) return;
 
-    handleTerm(term); // passing the term to the parent
+    handleTerm(term);
     console.log("Form being submitted!");
     setTerm("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="search-form"
+    >
       <input
         type="text"
         onChange={(e) => setTerm(e.target.value)}
         value={term}
         placeholder="Search your images"
+        className="search-input"
       />
 
-      <button type="submit">Search Images</button>
+      <button
+        type="submit"
+        className="search-button"
+      >
+        Search Images
+      </button>
     </form>
   );
 }
