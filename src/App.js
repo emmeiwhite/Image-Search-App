@@ -2,17 +2,20 @@ import "./app.css";
 import ImageList from "./components/ImageList";
 import SearchBar from "./components/SearchBar";
 import searchImages from "./api";
+import { useState } from "react";
 
 function App() {
+  const [images, setImages] = useState([]);
   // Child to parent communication !
   // We are defining this function only to be passed down as props, and call it in the SearchBar component to receive the search term that would be clicked there
-  const handleSearchTerm = (term) => {
-    searchImages(term);
+  const handleSearchTerm = async (term) => {
+    const result = await searchImages(term);
+    setImages(result);
   };
   return (
     <div className="App">
       <SearchBar handleTerm={handleSearchTerm} />
-      <ImageList />
+      <ImageList images={images} />
     </div>
   );
 }
